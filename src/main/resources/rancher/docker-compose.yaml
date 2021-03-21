@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   rancher:
+    container_name: rancher
     restart: always
     privileged: true
     image: 'rancher/rancher:latest'
@@ -12,4 +13,4 @@ services:
       - 9024:30334
       - 3001:30500
     volumes:
-      - /home/jan/volumes/rancher:/var/lib/rancher:rw
+      - "//home/jan/volumes/rancher:/var/lib/rancher:rw"

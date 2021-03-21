@@ -1,0 +1,41 @@
+winpty docker run -it -p 1880:1880 -v /$PWD:/data --name mynodered nodered/node-red
+
+docker run -d -p 3000:3000 --name grafana grafana/grafana
+
+docker run -d -p 27017-27019:27017-27019 --name mongodb --network dev mongo
+
+winpty docker run -d -it \
+    --network dev \
+    --name mongo-express \
+    -p 8081:8081 \
+    -e ME_CONFIG_OPTIONS_EDITORTHEME="ambiance" \
+    -e ME_CONFIG_MONGODB_SERVER="mongodb" \
+    mongo-express
+
+//docker run -d --hostname my-rabbit --network dev --name rabbitMQ rabbitmq
+docker run -d --hostname my-rabbit --network dev --name rabbitMQManage -p 8086:15672 rabbitmq:management
+
+docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+
+
+
+docker run -d -p 8090:80 --network dev --name wordpress wordpress
+docker run -d -p 8090:80 --add-host=host.docker.internal:host-gateway --name wordpress wordpress
+host.docker.internal
+define('ADMIN_COOKIE_PATH', '/');
+define('COOKIE_DOMAIN', '');
+define('COOKIEPATH', '');
+define('SITECOOKIEPATH', '');
+
+docker run --name mysql -p 8091:3306 -e MYSQL_ROOT_PASSWORD=test --network dev -d mysql
+docker run --name mysql -p 8091:3306 -e MYSQL_ROOT_PASSWORD=Psmcg4t1PElyyKs3VHVF]  -v //c/volumes/mysql:/bitnami/mysql/data --network dev -d bitnami/mysql
+docker run --name mongodb -p 8091:3306 bitnami/mongodb:latest
+
+
+docker run --name qd-backend -p 9020:9020 --network dev -d qd_software_portal:0.0.2-SNAPSHOT
+docker run --name qd-frontend -p 3000:80 --network dev -d qd-frontend:0.0.2
+
+
+docker run --name rancher --privileged -d --restart=unless-stopped -p 9021:80 -p 9022:443 -p 9023:30333 -p 9024:30334 -p 3001:30500 -v //home/jan/volumes/rancher:/var/lib/rancher rancher/rancher
+
+docker run --name rancher --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 -p 9023:30333 -p 9024:30334 -v /home/qd/volumes/rancher:/var/lib/rancher rancher/rancher

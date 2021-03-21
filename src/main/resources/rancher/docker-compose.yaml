@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  rancher:
+    restart: always
+    privileged: true
+    image: 'rancher/rancher:latest'
+    ports:
+      - 9021:80
+      - 9022:443
+      - 9023:30333
+      - 9024:30334
+      - 3001:30500
+    volumes:
+      - /home/jan/volumes/rancher:/var/lib/rancher:rw

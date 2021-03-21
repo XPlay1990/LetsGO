@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  mongodb:
+    image: 'docker.io/bitnami/mongodb:latest'
+    ports:
+      - "27017:27017"
+    volumes:
+      - /c/volumes/mongodb:/bitnami/mongodb
+    environment:
+      - MONGODB_ROOT_PASSWORD=KwlCgXuswI9pFob6KhoW-
+      - MONGODB_USERNAME=spring
+      - MONGODB_PASSWORD=appPassword123-
+      - MONGODB_DATABASE=spring
+volumes:
+  mongodb_data:
+    driver: local
